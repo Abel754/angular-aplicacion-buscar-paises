@@ -1,0 +1,12 @@
+<!-- IMPORTANT: Com que utilitzem els Routers en aquest component, haurem d'importar els Route en el shared.module.ts perquè és el mòdul que crida aquest component. Si no, no els detectarà -->
+
+<h2>Búsquedas</h2>
+<hr>
+<ul class="list-group">
+    <!-- A tenir en compte * routerLink: permet que quan cliquis a un dels li, et porta al path que indica (paths definits a app-routing.module.ts) -->
+    <!-- A tenir en compte * routerLinkActive: Indica que quan s'activi el routerLink, assignarà la classe active (classe de bootstrap que li assigna un background al estar actiu)) -->
+    <!-- routerLinkActiveOptions: Amb l'exact true sempre, l'hem de posar obligatòriament sempre que el routerLink sigui routerLink="" (string buit), si no, sempre apareixerà com actiu ) -->
+    <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="list-group-item">Buscar País</li>
+    <li routerLink="region" routerLinkActive="active" class="list-group-item">Por Región</li>
+    <li routerLink="capital" routerLinkActive="active" class="list-group-item">Por Capital</li>
+</ul>

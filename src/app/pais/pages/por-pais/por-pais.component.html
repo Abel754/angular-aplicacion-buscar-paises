@@ -1,0 +1,44 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h2>Por País</h2>
+    <hr>
+    
+    
+    <div class="row">
+        <div class="col">
+            <app-pais-input 
+                (onEnter)="buscar($event)"
+                (onDebounce)="sugerencias($event)"
+                placeholder="Buscar país...">
+            </app-pais-input>  <!-- Crida al mètode buscar del component por-pais -->
+        </div>
+    </div>
+    
+    <ul *ngIf="mostrarSugerencias" class="list-group">
+        <li 
+            *ngFor="let pais of paisesSugeridos" 
+            class="list-group-item list-group-item-action">
+            <a class="nav-link" [routerLink]="['/pais', pais.alpha2Code]">
+                {{pais.name}}
+            </a>
+        </li>
+        <li (click)="buscarSugerido(termino)" class="list-group-item list-group-item-action">
+            <a class="nav-link">
+                Buscar "{{termino}}"
+            </a>
+        </li>
+    </ul>
+    
+    <hr>
+</div>
+
+
+<!-- els *ng sempre es comuniquen amb els components (por-pais.component.ts). En aquest cas comprova si la variable hayError és true perquè no ha trobat cap valor -->
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontró nada con el término {{termino}}
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla> <!-- Li enviem a aquest component la informació de paises  -->
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h2>Por Capital</h2>
+    <hr>
+
+
+    <div class="row">
+        <div class="col">
+            <app-pais-input 
+                (onEnter)="buscar($event)"
+                placeholder="Buscar capital...">
+            </app-pais-input>  <!-- Crida al mètode buscar del component por-pais -->
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<!-- els *ng sempre es comuniquen amb els components (por-pais.component.ts). En aquest cas comprova si la variable hayError és true perquè no ha trobat cap valor -->
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontró nada con el término {{termino}}
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla> <!-- Li enviem a aquest component la informació de paises  -->
+    </div>
+</div>

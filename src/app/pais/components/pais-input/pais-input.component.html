@@ -1,0 +1,12 @@
+<form (ngSubmit)="buscar()" autocomplete="off">
+    <!-- Podem utilitzar ngModel perquè hem fet import del FormsModule a pais.module.ts -->
+    <!-- Input s'executa a l'escriure coses -->
+    <input 
+        type="text" 
+        name="termino" 
+        [placeholder]="placeholder"
+        class="form-control"
+        [(ngModel)]="termino"
+        (input)="teclaPresionada($event)"
+    >
+</form>
